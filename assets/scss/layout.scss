@@ -1,0 +1,35 @@
+.layout-default {
+  @apply bg-grey-darkest text-fontcolor;
+
+  #navigation {
+    .nav-desktop {
+      @apply fixed;
+    }
+
+    &.nav-dark {
+      .nav-desktop {
+        @apply bg-grey-darkest;
+      }
+    }
+  }
+
+  .page {
+    padding-top: 92px;
+  }
+}
+
+.layout-accent {
+  @apply bg-blue;
+}
+
+.layout-landing {
+  @apply bg-white;
+}
+
+@screen xl {
+  .layout-landing {
+    .container {
+      @apply max-w-2xl;
+    }
+  }
+}

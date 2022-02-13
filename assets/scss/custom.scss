@@ -1,0 +1,150 @@
+@tailwind utilities;
+
+*,
+*:before,
+*:after {
+  @apply m-0;
+  box-sizing: border-box;
+}
+
+html {
+  @apply font-sans;
+  font-size: 16px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  @apply font-sans;
+}
+
+.freeze-viewport {
+  @apply w-full h-full overflow-hidden;
+}
+
+.container {
+  @apply mx-auto;
+}
+
+.location {
+  @apply flex items-center pl-5 bg-no-repeat bg-left text-yellow font-semibold;
+  background-image: url('/icons/gps.svg');
+}
+
+.heading {
+  @apply tracking-tight;
+}
+
+p {
+  @apply leading-snug;
+}
+
+a {
+  @apply text-grey-lighter font-semibold no-underline;
+}
+
+.layout-default {
+  a {
+    &:hover {
+      @apply text-blue;
+    }
+  }
+}
+
+.link-primary {
+  @apply font-semibold cursor-pointer;
+
+  &:hover {
+    @apply text-grey-lighter;
+  }
+}
+
+.link-white {
+  @apply text-white cursor-pointer font-semibold underline;
+
+  &:hover {
+    @apply text-white;
+  }
+}
+
+.link-purple {
+  @apply font-semibold cursor-pointer text-purple;
+
+  &:hover {
+    @apply text-purple-dark;
+  }
+}
+
+.box-720x90 {
+  @apply flex items-center justify-center my-4;
+
+  .box {
+    @apply w-full flex items-center justify-center text-center text-grey font-bold;
+    height: 90px;
+  }
+}
+
+.box-300x250 {
+  @apply flex items-center justify-center mb-4;
+
+  .box {
+    @apply w-full flex items-center justify-center text-center text-grey font-bold;
+    height: 250px;
+  }
+}
+
+.ad-728x90 {
+  min-width: 200px;
+  max-width: 728px;
+  min-height: 50px;
+  max-height: 100px;
+}
+
+.ad-300x250 {
+  min-width: 200px;
+  max-width: 336px;
+  min-height: 50px;
+  max-height: 100px;
+}
+
+.pagination {
+  @apply flex flex-row-reverse justify-between py-8;
+}
+
+.disable-scrollbars {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* Chrome/Safari/Webkit */
+  }
+}
+
+@layer utilities {
+  .disable-scrollbars {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    &::-webkit-scrollbar {
+      width: 0px;
+      background: transparent; /* Chrome/Safari/Webkit */
+    }
+  }
+}
+
+@screen md {
+  .ad-728x90 {
+    min-width: 468px;
+    max-width: 728px;
+    min-height: 60px;
+    max-height: 90px;
+  }
+
+  .ad-300x250 {
+    min-width: 300px;
+    max-width: 336px;
+    min-height: 100px;
+    max-height: 280px;
+  }
+}

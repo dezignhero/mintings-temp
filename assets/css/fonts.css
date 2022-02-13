@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Circular Std';
+  src: url('/fonts/CircularStd-Book.woff2') format('woff2'),
+    url('/fonts/CircularStd-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('/fonts/CircularStd-Bold.woff2') format('woff2'),
+    url('/fonts/CircularStd-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Akira';
+  src: url('/fonts/AkiraExpanded-SuperBold.woff2') format('woff2'),
+    url('/fonts/AkiraExpanded-SuperBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}

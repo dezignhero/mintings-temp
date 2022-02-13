@@ -1,0 +1,101 @@
+.button {
+  @apply inline-block border-0 font-bold text-base py-3 px-6 cursor-pointer rounded-full;
+
+  &.button-outline {
+    @apply border border-white;
+    padding: 10px 1.5rem;
+
+    &.button-green {
+      @apply bg-transparent border-green text-green border-2;
+
+      &:hover {
+        @apply bg-green text-white;
+      }
+    }
+
+    &.button-white {
+      @apply bg-transparent border-white text-white border-2;
+
+      &:hover {
+        @apply text-white;
+        background: rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+
+  &.button-purple {
+    @apply bg-purple text-white;
+
+    &:hover {
+      @apply bg-purple-dark;
+    }
+  }
+
+  &.button-red {
+    @apply bg-red text-white;
+
+    &:hover {
+      @apply bg-red-dark;
+    }
+  }
+
+  &.button-blue {
+    @apply bg-blue text-white;
+
+    &:hover {
+      @apply text-white bg-blue-dark;
+    }
+  }
+
+  &.button-blue-light {
+    @apply bg-blue-light text-white;
+
+    &:hover {
+      @apply bg-blue-dark;
+    }
+  }
+
+  &.button-yellow {
+    @apply bg-yellow text-black;
+
+    &:hover {
+      @apply bg-yellow-dark;
+    }
+  }
+
+  &.button-green {
+    @apply bg-green text-white;
+
+    &:hover {
+      @apply bg-green-dark;
+    }
+  }
+
+  &.button-white {
+    @apply bg-white text-black;
+
+    &:hover {
+      @apply text-black bg-grey-lighter;
+    }
+  }
+
+  &.button-grey {
+    @apply bg-grey-darker text-white;
+
+    &:hover {
+      @apply bg-grey-dark;
+    }
+  }
+
+  &.button-arrow-left {
+    @apply bg-no-repeat pl-12;
+    background-image: url('/icons/arrow-left.svg');
+    background-position: left 1rem bottom 50%;
+  }
+
+  &.button-arrow-right {
+    @apply bg-no-repeat pr-12;
+    background-image: url('/icons/arrow-right.svg');
+    background-position: right 1rem bottom 50%;
+  }
+}

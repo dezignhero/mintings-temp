@@ -1,0 +1,162 @@
+.layout-default {
+  .page {
+    @apply p-4;
+    padding-top: 52px;
+
+    &.page-info {
+      &.page-blue {
+        @apply bg-blue;
+
+        p {
+          @apply text-white text-xl;
+        }
+      }
+
+      .content {
+        @apply py-4;
+      }
+
+      h1,
+      h2,
+      h3 {
+        @apply font-bold text-white;
+      }
+
+      h1 {
+        @apply text-3xl mb-6;
+      }
+
+      h2 {
+        @apply mb-6;
+      }
+
+      h3 {
+        @apply mb-1;
+      }
+
+      ul {
+        @apply mb-8;
+      }
+
+      p {
+        @apply mb-6;
+      }
+    }
+
+    &.page-2col {
+      .col-left {
+        @apply hidden;
+      }
+    }
+
+    .col-left,
+    .col-mid,
+    .col-right {
+      @apply w-full;
+    }
+  }
+}
+
+.layout-accent {
+  .page {
+    &.page-info {
+      p {
+        @apply text-white text-xl;
+      }
+    }
+  }
+}
+
+@screen md {
+  .layout-default {
+    .page {
+      @apply p-6;
+      padding-top: 92px; /* Fixed navigation header */
+
+      &.page-wrap {
+        .container {
+          @apply flex-wrap;
+        }
+
+        .col-left {
+          @apply w-full;
+        }
+
+        .col-mid {
+          @apply flex-1 pl-0;
+        }
+      }
+
+      &.page-2col {
+        .col-left {
+          @apply block;
+        }
+      }
+
+      .container {
+        @apply flex justify-between;
+      }
+
+      .col-left {
+        @apply w-1/6 mb-6;
+      }
+
+      .col-mid {
+        @apply flex-1 px-6 mb-6;
+      }
+
+      .col-right {
+        @apply sticky h-full pt-3 mb-6;
+        top: 132px;
+        width: 300px;
+      }
+
+      &.page-info {
+        .container {
+          @apply max-w-screen-xl px-12;
+        }
+
+        h1 {
+          @apply text-5xl mb-10;
+        }
+      }
+    }
+  }
+}
+
+@screen lg {
+  .layout-landing {
+    .page {
+      .container {
+      }
+    }
+  }
+
+  .layout-default {
+    .page {
+      &.page-wrap {
+        .container {
+          @apply flex-no-wrap;
+        }
+
+        .col-left {
+          @apply sticky overflow-y-scroll;
+          width: 180px;
+          max-height: calc(100vh - 92px);
+          top: 92px;
+          /* hide scrollbar */
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE 10+ */
+          &::-webkit-scrollbar {
+            width: 0px;
+            background: transparent; /* Chrome/Safari/Webkit */
+          }
+        }
+
+        .col-mid {
+          @apply pl-6;
+        }
+      }
+    }
+  }
+}

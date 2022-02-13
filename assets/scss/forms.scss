@@ -1,0 +1,57 @@
+input,
+textarea,
+select {
+	@apply w-full rounded-lg px-3 py-4 bg-grey-darkest text-grey-lighter;
+}
+
+*:focus {
+	@apply outline-none !important;
+}
+
+/*
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+	@apply text-grey;
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+	outline: none !important;
+	border: 1px solid theme('colors.indigo.default');
+	box-shadow: none;
+}
+
+input[type=number] {
+	appearance: textfield;
+	-moz-appearance: textfield;
+	-webkit-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+*/
+
+
+.form-row {
+	@apply mb-4;
+
+	&:last-child {
+		@apply mb-0;
+	}
+}
+
+@screen md {
+	.form-row {
+		@apply flex -mx-2;
+
+		* {
+			@apply mx-2;
+		}
+	}
+}
