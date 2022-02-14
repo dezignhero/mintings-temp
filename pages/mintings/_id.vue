@@ -335,22 +335,21 @@ export default {
       this.setErrorMsg(null)
       if (!isNil(this.walletAddress)) {
         // Metamask Provider (Working on Desktop)
-        if (typeof window.ethereum === 'undefined') {
-          this.setErrorMsg('Ethereum instance not found')
-          return this.resetMinting()
-        }
-        await window.ethereum.request({
-          method: 'eth_requestAccounts'
-        })
-        const providerSource = window.ethereum
+        // if (typeof window.ethereum === 'undefined') {
+        //   this.setErrorMsg('Ethereum instance not found')
+        //   return this.resetMinting()
+        // }
+        // await window.ethereum.request({
+        //   method: 'eth_requestAccounts'
+        // })
+        // const providerSource = window.ethereum
 
         // WalletConnect Provider (Not working)
-        // const providerSource = new WalletConnectProvider({
-        //   infuraId: process.env.infuraId,
-        //   qrcode: true
-        // })
-        // await providerSource.enable()
-        // await this.wcConnector.sendTransaction()
+        const providerSource = new WalletConnectProvider({
+          infuraId: process.env.infuraId,
+          qrcode: true
+        })
+        await providerSource.enable()
 
         // Get Provider/Signer
         const provider = new ethers.providers.Web3Provider(providerSource)
