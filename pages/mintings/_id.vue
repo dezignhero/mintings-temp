@@ -135,13 +135,16 @@ export default {
       return get(this.assets, '0', null)
     },
     walletSymbol() {
-      return get(this.walletAsset, 'symbol', null)
+      return get(this.walletAsset, 'symbol', 'ETH')
     },
     walletBalance() {
-      return (
-        get(this.walletAsset, 'balance', 0) /
-        Math.pow(10, get(this.walletAsset, 'decimals', 0))
-      )
+      const balance = get(this.walletAsset, 'balance', null)
+      return isNil(balance)
+        ? null
+        : balance / Math.pow(10, get(this.walletAsset, 'decimals', 0))
+    },
+    walletBalanceText() {
+      return isNil(this.walletBalance) ? '--' : this.walletBalance.toFixed(3)
     },
     walletAddress() {
       return get(this.wcAccounts, '0', null)
@@ -157,7 +160,7 @@ export default {
       return this.walletAddress
     },
     walletDetails() {
-      return `${this.walletBalance} ${this.walletSymbol}\n${this.walletAddressTrimmed}`
+      return `${this.walletBalanceText} ${this.walletSymbol}\n${this.walletAddressTrimmed}`
     },
     nftDescription() {
       if (this.mintSuccessful) {
@@ -178,7 +181,7 @@ export default {
       return get(this.nft, 'total', 1)
     },
     mintCost() {
-      return get(this.nft, 'price', 0.5)
+      return get(this.nft, 'price', 0.05)
     },
     mintExpiration() {
       if (this.timerCount === null) {
@@ -344,10 +347,13 @@ export default {
         // })
         // const providerSource = window.ethereum
 
-        // WalletConnect Provider (Not working)
+        // WalletConnect Provider
         const providerSource = new WalletConnectProvider({
           infuraId: process.env.infuraId,
           qrcode: true
+          // rpc: {
+          //   4: process.env.provider
+          // }
         })
         await providerSource.enable()
 
@@ -392,7 +398,7 @@ export default {
           address: accounts[0],
           chainId
         })
-        this.setFlowState(FlowState.Mint.name)
+        this.checkFunds()
       }
     },
     buttonAction() {
@@ -401,6 +407,15 @@ export default {
           return this.connectWallet()
         case FlowState.Mint.name:
           return this.mintNft()
+        case FlowState.Insufficient.name:
+          return this.checkFunds()
+      }
+    },
+    checkFunds() {
+      if (this.walletBalance < this.mintCost) {
+        this.setFlowState(FlowState.Insufficient.name)
+      } else {
+        this.setFlowState(FlowState.Mint.name)
       }
     },
     ...mapActions({
