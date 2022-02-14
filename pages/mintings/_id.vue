@@ -412,10 +412,10 @@ export default {
       }
     },
     checkFunds() {
-      if (this.walletBalance < this.mintCost) {
-        this.setFlowState(FlowState.Insufficient.name)
-      } else {
+      if (isNil(this.walletBalance) || this.walletBalance >= this.mintCost) {
         this.setFlowState(FlowState.Mint.name)
+      } else {
+        this.setFlowState(FlowState.Insufficient.name)
       }
     },
     ...mapActions({
